@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Roadmap</title>
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 30px;
+      color: #333;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #4f46e5;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: left;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4f46e5;
+    }
+
+    h3 {
+      margin-top: 20px;
+      color: #10b981;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    canvas {
+      margin: 40px auto;
+      display: block;
+      max-width: 600px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="PresalePage.html">💰 Presale</a>
+    <a href="RoadmapPage.html">📈 Roadmap</a>
+  </nav>
+
+  <div class="container">
+    <h1>🚀 BabyPanda Flash Roadmap</h1>
+
+    <h3>Phase 0: Preparation</h3>
+    <p>Launch of Twitter, Discord, and website. 15% token allocation for early Discord members.</p>
+
+    <h3>Phase 1: $BypaF Airdrop</h3>
+    <p>Whitelist early users for the $BypaF token airdrop.</p>
+
+    <h3>Phase 2: Token Presale</h3>
+    <p>Presale begins with token bonuses. Participants can earn rights to mint NFTs.</p>
+
+    <h3>Phase 3: DEX Listing</h3>
+    <p>Listing on Raydium, CoinMarketCap, and CoinGecko submissions.</p>
+
+    <h3>Phase 4: NFT Minting</h3>
+    <p>NFTs can be minted using $BypaF or SOL.</p>
+
+    <h3>Phase 5: Token Burn</h3>
+    <p>Burn 5% of tokens for every 1,111 NFTs minted.</p>
+
+    <h3>Phase 6: Marketplace Listing</h3>
+    <p>NFTs available on Solanart and Magic Eden.</p>
+
+    <h3>Phase 7: Ecosystem Expansion</h3>
+    <p>NFT staking, community voting, and merchandise store launch.</p>
+  </div>
+
+  <h2>📊 Tokenomics</h2>
+  <canvas id="tokenChart"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('tokenChart');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Presale (9%)',
+          'Public Sale (5%)',
+          'DEX Liquidity (12%)',
+          'Staking & Rewards (20%)',
+          'Airdrop (18%)',
+          'Team & Founders (13%)',
+          'Community (15%)',
+          'Reserve (8%)'
+        ],
+        datasets: [{
+          label: 'Token Allocation',
+          data: [9, 5, 12, 20, 18, 13, 15, 8],
+          backgroundColor: [
+            '#ff9999', '#66b3ff', '#99ff99', '#ffcc99',
+            '#c2c2f0', '#ffb3e6', '#c4e17f', '#f7c6c7'
+          ]
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
