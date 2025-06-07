@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tokenomics | BabyPanda Flash</title>
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 30px;
+      color: #333;
+      text-align: center;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #e0e7ff;
+      padding: 12px 0;
+      position: relative;
+    }
+
+    .hamburger-menu {
+      display: inline-block;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #4f46e5;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .nav-links a {
+      margin: 10px 0;
+      text-decoration: none;
+      color: #4f46e5;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .tokenomics-section {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .tokenomics-section h1 {
+      margin-bottom: 20px;
+    }
+
+    .chart-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      position: relative;
+      height: 400px;
+    }
+
+    .token-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .token-box {
+      background-color: #f0f4ff;
+      border: 1px solid #d0d7ff;
+      border-radius: 8px;
+      padding: 15px;
+      width: 230px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+
+    .token-box h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: #4f46e5;
+    }
+
+    .token-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">🏠 Home</a>
+      <a href="PrivateSalePage.html">🔐 Private Sale</a>
+      <a href="PresalePage.html">💰 Presale</a>
+      <a href="PublicSalePage.html">💵 Public Sale</a>
+      <a href="RoadmapPage.html">📈 Roadmap</a>
+      <a href="TokenomicsPage.html">📊 Tokenomics</a>
+    </div>
+  </nav>
+
+  <div class="tokenomics-section">
+    <h1>📊 BabyPanda Tokenomics</h1>
+    <div class="chart-wrapper">
+      <canvas id="tokenChart"></canvas>
+    </div>
+
+    <div class="token-details">
+      <div class="token-box">
+        <h4>Presale — 20%</h4>
+        <p>Early fundraising for committed investors before public launch.</p>
+      </div>
+      <div class="token-box">
+        <h4>Public Sale — 14%</h4>
+        <p>Main public token offering open to all participants.</p>
+      </div>
+      <div class="token-box">
+        <h4>DEX Liquidity — 12%</h4>
+        <p>Used to provide liquidity on decentralized exchanges.</p>
+      </div>
+      <div class="token-box">
+        <h4>NFT Minting Rewards — 6%</h4>
+        <p>Incentives for users minting and holding BabyPanda NFTs.</p>
+      </div>
+      <div class="token-box">
+        <h4>Private Sale — 14%</h4>
+        <p>Token allocation for early backers with vesting schedule.</p>
+      </div>
+      <div class="token-box">
+        <h4>Marketing & Partnerships — 5%</h4>
+        <p>Promotion, influencers, and strategic collaborations.</p>
+      </div>
+      <div class="token-box">
+        <h4>Team & Founders — 12%</h4>
+        <p>Allocated to core team with long-term vesting.</p>
+      </div>
+      <div class="token-box">
+        <h4>Community — 15%</h4>
+        <p>Rewards, governance incentives, and events for holders.</p>
+      </div>
+      <div class="token-box">
+        <h4>Reserve — 2%</h4>
+        <p>Held for unforeseen needs or future project expansion.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 BabyPanda Flash. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navLinks');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    const ctx = document.getElementById('tokenChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Presale (20%)',
+          'Public Sale (14%)',
+          'DEX Liquidity (12%)',
+          'NFT Minting Rewards (6%)',
+          'Private Sale (14%)',
+          'Marketing & Partnerships (5%)',
+          'Team & Founders (12%)',
+          'Community (15%)',
+          'Reserve (2%)'
+        ],
+        datasets: [{
+          data: [20, 14, 12, 6, 14, 5, 12, 15, 2],
+          backgroundColor: [
+            '#ff9999', '#66b3ff', '#99ff99', '#ffcc99',
+            '#c2c2f0', '#ffb3e6', '#c4e17f', '#f7c6c7', '#a1c4fd'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#333',
+              boxWidth: 14,
+              padding: 12
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
