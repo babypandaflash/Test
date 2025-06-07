@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BabyPanda Flash - Tokenomics</title>
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 30px;
+      color: #333;
+      margin: 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #e0e7ff;
+      padding: 12px 0;
+      position: relative;
+    }
+
+    .hamburger-menu {
+      display: inline-block;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #4f46e5;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .nav-links a {
+      margin: 10px 0;
+      text-decoration: none;
+      color: #4f46e5;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .tokenomics-container {
+      margin-top: 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+
+    .chart-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      height: 400px;
+      position: relative;
+    }
+
+    .details {
+      margin-top: 30px;
+    }
+
+    .details h2 {
+      text-align: center;
+      color: #4f46e5;
+      margin-bottom: 20px;
+    }
+
+    .details ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .details li {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">🏠 Home</a>
+      <a href="PrivateSalePage.html">🔐 Private Sale</a>
+      <a href="PresalePage.html">💰 Presale</a>
+      <a href="PublicSalePage.html">💵 Public Sale</a>
+      <a href="RoadmapPage.html">📈 Roadmap</a>
+      <a href="TokenomicsPage.html">📊 Tokenomics</a>
+    </div>
+  </nav>
+
+  <div class="tokenomics-container">
+    <h1>📊 Tokenomics</h1>
+    <div class="chart-wrapper">
+      <canvas id="tokenChart"></canvas>
+    </div>
+    <p style="text-align:center;">This chart represents the token distribution strategy for BabyPanda Flash.</p>
+
+    <div class="details">
+      <h2>🔍 Detailed Token Allocation</h2>
+      <ul>
+        <li><strong>Presale (20%)</strong>: Allocated for early supporters during the presale round to build strong community backing.</li>
+        <li><strong>Public Sale (14%)</strong>: Available for public purchase to ensure decentralized ownership and wide distribution.</li>
+        <li><strong>DEX Liquidity (12%)</strong>: Reserved to provide liquidity on decentralized exchanges and ensure smooth trading experience.</li>
+        <li><strong>NFT Minting Rewards (6%)</strong>: Rewards distributed to users through exclusive NFT minting events and engagement activities.</li>
+        <li><strong>Private Sale (14%)</strong>: Offered to strategic investors who support long-term project growth and scalability.</li>
+        <li><strong>Marketing & Partnerships (5%)</strong>: Budget for promotional campaigns, influencer collaborations, and strategic alliances.</li>
+        <li><strong>Team & Founders (12%)</strong>: Locked and vested allocation to the core team for their commitment and development effort.</li>
+        <li><strong>Community (15%)</strong>: Airdrops, giveaways, contests, and rewards for community engagement and user acquisition.</li>
+        <li><strong>Reserve (2%)</strong>: Kept for unforeseen opportunities, emergencies, or future expansion plans.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 BabyPanda Flash. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navLinks');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    const ctx = document.getElementById('tokenChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Presale (20%)',
+          'Public Sale (14%)',
+          'DEX Liquidity (12%)',
+          'NFT Minting Rewards (6%)',
+          'Private Sale (14%)',
+          'Marketing & Partnerships (5%)',
+          'Team & Founders (12%)',
+          'Community (15%)',
+          'Reserve (2%)'
+        ],
+        datasets: [{
+          data: [20, 14, 12, 6, 14, 5, 12, 15, 2],
+          backgroundColor: [
+            '#ff9999', '#66b3ff', '#99ff99', '#ffcc99',
+            '#c2c2f0', '#ffb3e6', '#c4e17f', '#f7c6c7', '#a1c4fd'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#333',
+              boxWidth: 14,
+              padding: 12
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
