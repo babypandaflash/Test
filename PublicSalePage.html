@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BypaF Token Public Sale</title>
+
+  <meta name="description" content="Join the official $BypaF token public sale. Limited supply and time-based stages.">
+  <meta property="og:title" content="BypaF Token Public Sale">
+  <meta property="og:description" content="Secure your $BypaF tokens during the public sale.">
+  <meta property="og:type" content="website">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background-color: #6366f1;
+      width: 100%;
+      padding: 16px;
+      color: white;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 16px;
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 700px;
+      width: 100%;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    h1 {
+      color: #1f2937;
+    }
+
+    .token-info {
+      margin: 20px 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .buy-button {
+      margin: 24px 0;
+    }
+
+    .buy-button button {
+      padding: 14px 26px;
+      font-size: 16px;
+      background-color: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-button button:hover {
+      background-color: #15803d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .soldout-button {
+      background-color: gray !important;
+      cursor: not-allowed !important;
+    }
+
+    .chart-section {
+      margin-top: 40px;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    .progress-box {
+      margin: 12px auto;
+      width: 90%;
+      max-width: 400px;
+      background-color: #e0e7ff;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background-color: #facc15;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .counter {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 20px 10px;
+      }
+      .buy-button button {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>BypaF Token Public Sale</h2>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="PresalePage.html">Presale</a>
+    <a href="PublicSalePage.html">Public Sale</a>
+    <a href="RoadmapPage.html">Roadmap</a>
+  </nav>
+
+  <main>
+    <h1>Official Public Sale of $BypaF Token</h1>
+    <div class="token-info">
+      <p><strong>Total Supply:</strong> 1,000,000,000 $BypaF</p>
+      <p><strong>Public Sale Allocation:</strong> 14% (140,000,000 $BypaF)</p>
+      <p><strong>Price per Token:</strong> 0.00001 SOL (Stage 1)</p>
+      <p><strong>Stage 1:</strong> 70,000,000 $BypaF (Hardcap: 700 SOL)</p>
+      <p><strong>Price per Token:</strong> 0.000015 SOL (Stage 2)</p>
+      <p><strong>Stage 2:</strong> 70,000,000 $BypaF (Hardcap: 1,050 SOL)</p>
+    </div>
+
+    <!-- Stage 1 -->
+    <div class="buy-button" id="stage1-button">
+      <button onclick="buyStage1()">💸 Buy $BypaF Now 1 (Min: 0.2 SOL)</button>
+      <div class="progress-box">
+        <div class="progress-bar" id="progressFill1"></div>
+      </div>
+      <div class="counter" id="counter1">Raised: 0 / 700 SOL</div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="buy-button hidden" id="stage2-button">
+      <button onclick="buyStage2()">💸 Buy $BypaF Now 2 (Min: 0.2 SOL)</button>
+      <div class="progress-box">
+        <div class="progress-bar" id="progressFill2"></div>
+      </div>
+      <div class="counter" id="counter2">Raised: 0 / 1,050 SOL</div>
+    </div>
+
+    <div class="chart-section">
+      <h2>📊 Tokenomics</h2>
+      <canvas id="tokenChart" width="300" height="300"></canvas>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 BypaF Project. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('tokenChart');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Presale (20%)',
+          'Public Sale (14%)',
+          'DEX Liquidity (12%)',
+          'Staking & Rewards (10%)',
+          'Private Sale (10%)',
+          'Marketing & Partnerships (5%)',
+          'Team & Founders (12%)',
+          'Community (15%)',
+          'Reserve (2%)'
+        ],
+        datasets: [{
+          data: [20, 14, 12, 10, 10, 5, 12, 15, 2],
+          backgroundColor: [
+            '#ff9999', '#66b3ff', '#99ff99', '#ffcc99',
+            '#c2c2f0', '#ffb3e6', '#c4e17f', '#f7c6c7', '#a1c4fd'
+          ]
+        }]
+      }
+    });
+
+    let currentSol1 = 0;
+    let currentSol2 = 0;
+    const hardcap1 = 700;
+    const hardcap2 = 1050;
+
+    const stage1Button = document.getElementById('stage1-button');
+    const stage2Button = document.getElementById('stage2-button');
+    const progressFill1 = document.getElementById('progressFill1');
+    const progressFill2 = document.getElementById('progressFill2');
+    const counter1 = document.getElementById('counter1');
+    const counter2 = document.getElementById('counter2');
+
+    function buyStage1() {
+      currentSol1 += 0.2;
+      if (currentSol1 > hardcap1) currentSol1 = hardcap1;
+
+      const percent = (currentSol1 / hardcap1) * 100;
+      progressFill1.style.width = percent + "%";
+      counter1.textContent = `Progress: ${currentSol1.toFixed(3)} / ${hardcap1} SOL`;
+
+      window.open("solana:8SKRL3UE5Y9UetFyJPBLxg89T97w6kQnZ5nj8c3WGpME?amount=0.01&label=BypaF%20PublicSale%20Stage%201&message=Public%20Sale%20Stage%201");
+
+      if (currentSol1 >= hardcap1) {
+        stage1Button.innerHTML = `<button class="soldout-button" disabled>❌ Stage 1 Sold Out</button>`;
+        stage2Button.classList.remove("hidden");
+      }
+    }
+
+    function buyStage2() {
+      if (currentSol2 >= hardcap2) return;
+
+      currentSol2 += 0.2;
+      if (currentSol2 > hardcap2) currentSol2 = hardcap2;
+
+      const percent = (currentSol2 / hardcap2) * 100;
+      progressFill2.style.width = percent + "%";
+      counter2.textContent = `Progress: ${currentSol2.toFixed(3)} / ${hardcap2} SOL`;
+
+      if (currentSol2 >= hardcap2) {
+        stage2Button.innerHTML = `<button class="soldout-button" disabled>❌ Stage 2 Sold Out</button>`;
+      } else {
+        window.open("solana:8SKRL3UE5Y9UetFyJPBLxg89T97w6kQnZ5nj8c3WGpME?amount=0.01&label=BypaF%20PublicSale%20Stage%202&message=Public%20Sale%20Stage%202");
+      }
+    }
+  </script>
+
+</body>
+</html>
